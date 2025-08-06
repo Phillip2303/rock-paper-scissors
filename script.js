@@ -87,8 +87,11 @@ function playGame() {
   for (i = 0; i < 5; i++) {
     playRound(getHumanChoice(), getComputerChoice());
   }
-
-  console.log(`Player: ${humanScore}\nComputer: ${computerScore}`);
+  if (humanScore > computerScore) {
+    console.log(`You win!\nPlayer: ${humanScore}\nComputer: ${computerScore}`);
+  } else {
+    console.log(`You lose!\nPlayer: ${humanScore}\nComputer: ${computerScore}`);
+  }
 }
 
 playGame();

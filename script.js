@@ -14,48 +14,19 @@ function getHumanChoice() {
   return input.toLowerCase();
 }
 
-/*function playRound(humanChoice, computerChoice) {
-  console.log("Human: " + humanChoice + "\nComputer: " + computerChoice);
-  if (humanChoice == computerChoice) {
-    console.log(
-      "Draw! Both used " + humanChoice[0].toUpperCase() + humanChoice.slice(1)
-    );
-  } else if (
-    (humanChoice == "rock" && computerChoice == "paper") ||
-    (humanChoice == "paper" && computerChoice == "scissors") ||
-    (humanChoice == "scissors" && computerChoice == "rock")
-  ) {
-    console.log(
-      "You lose! " +
-        computerChoice[0].toUpperCase() +
-        computerChoice.slice(1) +
-        " beats " +
-        humanChoice[0].toUpperCase() +
-        humanChoice.slice(1)
-    );
-    computerScore++;
-  } else {
-    console.log(
-      "You win! " +
-        humanChoice[0].toUpperCase() +
-        humanChoice.slice(1) +
-        " beats " +
-        computerChoice[0].toUpperCase() +
-        computerChoice.slice(1)
-    );
-    humanScore++;
-  }
-}*/
-
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
 
-  let playRound = function (humanChoice, computerChoice) {
+  let playRound = function (humanChoice, computerChoice, round) {
     //console.log("Human: " + humanChoice + "\nComputer: " + computerChoice);
     if (humanChoice == computerChoice) {
       console.log(
-        "Draw! Both used " + humanChoice[0].toUpperCase() + humanChoice.slice(1)
+        "Round " +
+          round +
+          ": Draw! Both used " +
+          humanChoice[0].toUpperCase() +
+          humanChoice.slice(1)
       );
     } else if (
       (humanChoice == "rock" && computerChoice == "paper") ||
@@ -63,7 +34,9 @@ function playGame() {
       (humanChoice == "scissors" && computerChoice == "rock")
     ) {
       console.log(
-        "You lose! " +
+        "Round " +
+          round +
+          ": You lose! " +
           computerChoice[0].toUpperCase() +
           computerChoice.slice(1) +
           " beats " +
@@ -73,7 +46,9 @@ function playGame() {
       computerScore++;
     } else {
       console.log(
-        "You win! " +
+        "Round " +
+          round +
+          ": You win! " +
           humanChoice[0].toUpperCase() +
           humanChoice.slice(1) +
           " beats " +
@@ -84,13 +59,17 @@ function playGame() {
     }
   };
 
-  for (i = 0; i < 5; i++) {
-    playRound(getHumanChoice(), getComputerChoice());
+  for (i = 1; i < 6; i++) {
+    playRound(getHumanChoice(), getComputerChoice(), i);
   }
   if (humanScore > computerScore) {
     console.log(`You win!\nPlayer: ${humanScore}\nComputer: ${computerScore}`);
-  } else {
+  } else if (humanScore < computerScore) {
     console.log(`You lose!\nPlayer: ${humanScore}\nComputer: ${computerScore}`);
+  } else {
+    console.log(
+      `It's a draw!\nPlayer: ${humanScore}\nComputer: ${computerScore}`
+    );
   }
 }
 

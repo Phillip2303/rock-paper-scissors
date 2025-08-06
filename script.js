@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   randomNum = Math.floor(Math.random() * 3);
   console.log(randomNum);
@@ -14,5 +17,3 @@ function getHumanChoice() {
   input = prompt("Choose between rock, paper and scissors!");
   return input;
 }
-
-console.log(getHumanChoice());
